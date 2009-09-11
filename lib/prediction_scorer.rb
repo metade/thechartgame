@@ -2,7 +2,7 @@ class PredictionScorer
   def initialize(chart)
     @chart = chart
     @index = {}
-    @chart.each_with_index { |a,i| @index[a] = i }
+    @chart.each_with_index { |a,i| @index[a] = i unless @index[a] }
   end
   
   def score(guesses, size=5)

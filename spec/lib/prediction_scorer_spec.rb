@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe PredictionScorer do
   before(:each) do
-    @scorer = PredictionScorer.new([:a,:b,:c,:d,:e,:f,:g,:h,:i,:j])
+    @scorer = PredictionScorer.new([:a,:b,:c,:d,:e,:f,:g,:h,:i,:j,:a])
   end
   
   describe "finding guesses" do
@@ -33,6 +33,10 @@ describe PredictionScorer do
       @scorer.score([:a,:b,:c,:d,:e]).should == 15
     end
     
+    it "should return a highish score for a slightly incorrect guess" do
+      @scorer.score([:a,:b,:c,:e,:d]).should == 14
+    end
+    
     it "should return a low score for guessing the right artists in the wrong order" do
       @scorer.score([:d,:c,:b,:a,:e]).should == 9
     end
@@ -53,6 +57,10 @@ describe PredictionScorer do
     
     it "should return a low score for guessing one or two artists" do
       @scorer.score(['Sugababes', 'Jay-Z Ft Rihanna & Kanye West']).should == 2
+    end
+    
+    it "should return a high score for a perfect guess" do
+      @scorer.score(['Jay-Z Ft Rihanna & Kanye West', 'Sugababes', 'David Guetta Ft Akon', 'Dizzee Rascal', 'Black Eyed Peas']).should == 15
     end
   end
 end
