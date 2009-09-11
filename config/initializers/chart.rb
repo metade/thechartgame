@@ -1,4 +1,5 @@
 require 'artist_matcher'
+require 'open-uri'
 
 chart_path = (RAILS_ENV=='test') ? 
   File.join(RAILS_ROOT, 'spec', 'fixtures', 'chart.yml') :
