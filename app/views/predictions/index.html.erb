@@ -1,0 +1,29 @@
+<h1>Predictions</h1>
+
+<h2>Current top 5</h2>
+<ul>
+  <% for artist in CHART[0,5] %>
+  <li><%= artist %></li>
+  <% end %>
+</ul>
+
+<h2>User predictions</h2>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Guess</th>
+    <th>Artists</th>
+    <th>Score</th>
+  </tr>
+<% for prediction in @predictions %>
+  <tr>
+    <td><%= prediction.user.username %></td>
+    <td><%= prediction.guess %></td>
+    <td><%= prediction.artists.join(', ') if prediction.artists %></td>
+    <td><%= prediction.score %></td>
+  </tr>
+<% end %>
+<table>
+
+<p><%= link_to('New prediction', new_prediction_path) %> | <%= link_to('Score new predictions', score_predictions_path)%></p>

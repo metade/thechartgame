@@ -1,0 +1,23 @@
+<h1>New prediction</h1>
+
+<% form_for :prediction, :url => { :action => "create" } do |f| %>
+  <%= error_messages_for :prediction %>
+  
+  <div>
+  <% fields_for "prediction[user_attributes]", @prediction.user do |user_form| %>
+    <%= user_form.label :username %>
+    <%= user_form.text_field :username %>
+    <%= user_form.error_message_on :username %>
+  <% end %>
+  </div>
+  
+  <div>
+    <%= f.label :guess %>
+    <%= f.text_area :guess, :size => "60x12" %>
+    <%= f.error_message_on :guess %>
+  </div>
+  
+  <div>
+    <%= submit_tag "Create" %>
+  </div>
+<% end %>
