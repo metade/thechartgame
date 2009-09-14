@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  string: 
+  year: 1
+  week: 1
+
+two:
+  string: 
+  year: 1
+  week: 1
