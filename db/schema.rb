@@ -12,6 +12,8 @@
 ActiveRecord::Schema.define(:version => 20090911110128) do
 
   create_table "charts", :force => true do |t|
+    t.string   "albums"
+    t.string   "singles"
     t.integer  "year"
     t.integer  "week"
     t.datetime "created_at"
