@@ -21,5 +21,14 @@ describe ArtistMatcher do
     it "should not match monkey" do
       @matcher.match('monkey').should be_nil
     end
+    
+    it "should not match Jay-Z to JLS" do
+      @matcher.match('Jay-Z').should be_nil
+    end
+    
+    it "should not match Muse to JLS" do
+      @matcher.match('Muse').should be_nil
+    end
+    
   end
 end

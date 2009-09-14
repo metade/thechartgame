@@ -13,7 +13,7 @@ class ArtistMatcher
     
     position, distance = scores.sort { |a,b| a.last <=> b.last }.first
     
-    if (score(search.size, distance) < 0.8)
+    if (artist_matched(search, distance))
       @chart[position]
     else
       nil
@@ -34,8 +34,12 @@ class ArtistMatcher
     string.gsub(/\W/, '').downcase
   end
   
-  def score(a, b)
-    min, max = [a, b].sort
-    min/max.to_f
+  def artist_matched(search, distance)
+    if search.size <= 4
+      (distance == 0)
+    else
+      min, max = [search.size, distance].sort
+      (min/max.to_f) < 0.8
+    end
   end
 end

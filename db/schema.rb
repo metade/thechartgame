@@ -9,7 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090910203953) do
+ActiveRecord::Schema.define(:version => 20090911110128) do
+
+  create_table "charts", :force => true do |t|
+    t.integer  "year"
+    t.integer  "week"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "predictions", :force => true do |t|
     t.integer  "user_id"
