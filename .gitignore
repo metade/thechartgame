@@ -4,3 +4,4 @@ tmp/**/*
 Capfile
 doc/api
 doc/app
+config/twitter.yml

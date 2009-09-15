@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20090911110128) do
 
   create_table "predictions", :force => true do |t|
     t.integer  "user_id"
+    t.integer  "twitter_status_id"
     t.string   "guess"
     t.string   "artists"
     t.integer  "year"

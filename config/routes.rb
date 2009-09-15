@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.root :controller => :pages
-  map.resources :predictions, :collection => { :score => :get }
+  map.resources :predictions, :collection => { :fetch => :get }
   
   # The priority is based upon order of creation: first created -> highest priority.
 

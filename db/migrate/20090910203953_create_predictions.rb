@@ -2,6 +2,7 @@ class CreatePredictions < ActiveRecord::Migration
   def self.up
     create_table :predictions do |t|
       t.integer :user_id
+      t.integer :twitter_status_id
       
       t.string :guess
       t.string :artists

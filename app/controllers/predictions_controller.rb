@@ -16,8 +16,10 @@ class PredictionsController < ApplicationController
     end
   end
   
-  def score
-    Prediction.score_all
+  def fetch
+    Prediction.fetch_from_twitter
+    chart = Chart.update_chart
+    chart.score_predictions! if chart
     redirect_to predictions_path
   end
 end
