@@ -37,7 +37,6 @@ class Chart < ActiveRecord::Base
   end
   
   def score_predictions!
-    
     unscored_predictions.each do |prediction|
       artists = matcher.match_string(prediction.guess)
       prediction.update_attributes(:score => scorer.score(artists), :artists => artists)
