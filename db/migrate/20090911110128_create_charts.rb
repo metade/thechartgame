@@ -1,8 +1,8 @@
 class CreateCharts < ActiveRecord::Migration
   def self.up
     create_table :charts do |t|
-      t.string :albums
-      t.string :singles
+      t.text :albums
+      t.text :singles
       
       t.integer :year
       t.integer :week
