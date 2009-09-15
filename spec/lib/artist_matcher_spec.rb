@@ -1,5 +1,9 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
+# sarah calvin harris, muse, peter andre, beyonce, the kooks  Calvin Harris, JLS, Beyonce, Beyonce, Little Boots  0.0
+# david jay-z, sugaerbabes, david guetta wilson, black eyed peas, dizzie rascal JLS, Sugababes, David Guetta Ft Akon, Black Eyed Peas, Dizzee Rascal  10.6666666666667
+# channon mika  Mika  1.0
+
 describe ArtistMatcher do
   before(:each) do
     @matcher = ArtistMatcher.new(CHART)
