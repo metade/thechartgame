@@ -19,4 +19,28 @@ class Chart < ActiveRecord::Base
       :albums => albums,
       :singles => singles)
   end
+  
+  def predictions
+    Prediction.find_all_by_year_and_week(year, week)
+  end
+  
+  def unscored_predictions
+    Prediction.find_all_by_year_and_week(year, week, :conditions => "score IS NULL")
+  end
+  
+  def matcher
+    @matcher ||= ArtistMatcher.new(singles)
+  end
+  
+  def scorer
+    @scorer ||= PredictionScorer.new(singles)
+  end
+  
+  def score_predictions!
+    
+    unscored_predictions.each do |prediction|
+      artists = matcher.match_string(prediction.guess)
+      prediction.update_attributes(:score => scorer.score(artists), :artists => artists)
+    end
+  end
 end
