@@ -12,6 +12,7 @@ class Prediction < ActiveRecord::Base
     twitter = Twitter::Base.new(TWITTER_AUTH)
     twitter.replies.each do |msg|
       next if Prediction.find_by_twitter_status_id(msg.id)
+      pp msg
       Prediction.create(params_from_twitter_message(msg))
     end
     twitter.direct_messages.each do |msg|
@@ -41,7 +42,7 @@ class Prediction < ActiveRecord::Base
       :year => date.year,
       :week => date.cweek,
       :user_attributes => { 
-        :username => msg.sender_screen_name 
+        :username => (msg.sender_screen_name || msg.user.screen_name)
       },
       :guess => msg.text }    
   end
